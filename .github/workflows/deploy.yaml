@@ -20,6 +20,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
+          ls
           cd ..
           git pull origin main
           docker-compose down
