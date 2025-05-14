@@ -20,7 +20,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          ls
+          docker-compose.yaml
           cd /home/ubuntu/django_deployment  
           git pull origin main
           docker-compose down
