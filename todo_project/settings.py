@@ -73,16 +73,31 @@ TEMPLATES = [
 WSGI_APPLICATION = 'todo_project.wsgi.application'
 
 # Database
+
+
+print("ENV DEBUG:")
+print("DB_NAME:", os.getenv('POSTGRES_DB'))
+print("DB_USER:", os.getenv('POSTGRES_USER'))
+print("DB_PASSWORD:", os.getenv('POSTGRES_PASSWORD'))
+print("DB_HOST:", os.getenv('POSTGRES_HOST'))
+print("DB_PORT:", os.getenv('POSTGRES_PORT'))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
+        'NAME': os.getenv('POSTGRES_DB', 'todo_user_10'),  # 👈 this must match what's created by Postgres
+        'USER': os.getenv('POSTGRES_USER', 'todo_user_10'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'vishnuPoiu'),
+        'HOST': os.getenv('POSTGRES_HOST', 'db'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }
 }
+
+print(f"\nENV DEBUG:")
+print(f"DB_NAME: {os.getenv('POSTGRES_DB')}")
+print(f"DB_USER: {os.getenv('POSTGRES_USER')}")
+print(f"DJANGO_DB_NAME: {DATABASES['default']['NAME']}\n")
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
