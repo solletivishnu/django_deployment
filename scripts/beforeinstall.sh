@@ -1,3 +1,4 @@
 #!/bin/bash
-cd /home/ubuntu/django_deployment/scripts || exit
-docker-compose down || true
+echo "[BeforeInstall] Stopping existing Docker containers (if any)..."
+docker ps -q | xargs -r docker stop
+docker system prune -af
