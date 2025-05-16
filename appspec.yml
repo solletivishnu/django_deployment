@@ -3,6 +3,8 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/django_deployment
+  - source: image_tag.txt
+    destination: /home/ubuntu/django_deployment
 
 hooks:
   BeforeInstall:
