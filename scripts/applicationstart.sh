@@ -1,4 +1,35 @@
 #!/bin/bash
-cd /home/ubuntu/django_deployment || exit
-echo "[ApplicationStart] Starting Docker containers..."
-docker-compose up -d
+#cd /home/ubuntu/django_deployment || exit
+#echo "[ApplicationStart] Starting Docker containers..."
+#docker-compose up -d
+#export IMAGE_TAG=$(cat /home/ubuntu/django_deployment/image_tag.txt)
+#docker pull vishnu9/todo-app:$IMAGE_TAG
+#docker-compose -f docker-compose.yml up -d --build
+
+#!/bin/bash
+
+#cd /home/ubuntu/django_deployment || exit 1
+
+# Load IMAGE_TAG from the file created by CodeBuild
+#export IMAGE_TAG=$(cat image_tag.txt)
+
+# Pull the exact image version
+#docker pull vishnu9/todo-app:$IMAGE_TAG
+
+# Start services with the correct tag
+#docker compose --env-file image_tag.env up -d
+
+
+#!/bin/bash
+echo "[ApplicationStart] Starting Docker container..."
+
+cd /home/ubuntu/django_deployment || exit 1
+
+# Load IMAGE_TAG from file
+export IMAGE_TAG=$(cat image_tag.txt)
+
+# Create an env file to pass IMAGE_TAG into docker-compose
+echo "IMAGE_TAG=$IMAGE_TAG" > image_tag.env
+
+# Start the app with correct tag
+docker compose --env-file image_tag.env up -d
