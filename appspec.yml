@@ -6,7 +6,7 @@ files:
 
 hooks:
   BeforeInstall:
-    - location: scripts/beforeInstall.sh
+    - location: scripts/beforeinstall.sh
       timeout: 300
       runas: ubuntu
 
@@ -16,11 +16,11 @@ hooks:
       runas: ubuntu
 
   AfterInstall:
-    - location: scripts/afterInstall.sh
+    - location: scripts/afterinstall.sh
       timeout: 300
       runas: ubuntu
 
   ApplicationStart:
-    - location: scripts/applicationStart.sh
+    - location: scripts/applicationstart.sh
       timeout: 300
       runas: ubuntu
