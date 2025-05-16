@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /home/ubuntu/django_deployment || exit
+cd /home/ubuntu/django_deployment/scripts || exit
 docker-compose pull
