@@ -23,7 +23,7 @@
 #!/bin/bash
 echo "[ApplicationStart] Starting Docker container..."
 
-cd /home/ubuntu/django_deployment || exit 1
+cd /home/ubuntu/django_deployment || exit 
 
 # Load IMAGE_TAG from file
 export IMAGE_TAG=$(cat image_tag.txt)
