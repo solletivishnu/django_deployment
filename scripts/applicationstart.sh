@@ -21,15 +21,33 @@
 
 
 #!/bin/bash
+#echo "[ApplicationStart] Starting Docker container..."
+#cd /home/ubuntu/django_deployment || exit 
+# Load IMAGE_TAG from file
+#export IMAGE_TAG=$(cat image_tag.txt)
+# Create an env file to pass IMAGE_TAG into docker-compose
+#echo "IMAGE_TAG=$IMAGE_TAG" > image_tag.env
+# Start the app with correct tag
+#docker compose --env-file image_tag.env up -d
+
+#!/bin/bash
 echo "[ApplicationStart] Starting Docker container..."
 
-cd /home/ubuntu/django_deployment || exit 
+cd /home/ubuntu/django_deployment || exit 1
+
+# Check image_tag.txt exists and is not empty
+if [ ! -s image_tag.txt ]; then
+  echo "Error: image_tag.txt not found or empty!"
+  exit 1
+fi
 
 # Load IMAGE_TAG from file
 export IMAGE_TAG=$(cat image_tag.txt)
 
-# Create an env file to pass IMAGE_TAG into docker-compose
+echo "Using IMAGE_TAG=$IMAGE_TAG"
+
+# Write tag to env file
 echo "IMAGE_TAG=$IMAGE_TAG" > image_tag.env
 
-# Start the app with correct tag
+# Start container
 docker compose --env-file image_tag.env up -d
