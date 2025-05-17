@@ -1,8 +1,8 @@
 #!/bin/bash
-#echo "[BeforeInstall] Stopping existing Docker containers (if any)..."
+echo "[BeforeInstall] Stopping existing Docker containers (if any)..."
 
-#docker ps -q | xargs -r docker stop
-#docker system prune -af
+docker ps -q | xargs -r docker stop
+docker system prune -af
 
 
 #!/bin/bash
@@ -15,8 +15,8 @@
 #docker compose down || true
 
 #!/bin/bash
-echo "[BeforeInstall] Stopping existing containers..."
-cd /home/ubuntu/django_deployment || exit 1
+#echo "[BeforeInstall] Stopping existing containers..."
+#cd /home/ubuntu/django_deployment || exit 1
 
-docker compose down || true
+#docker compose down || true
 
