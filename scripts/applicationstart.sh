@@ -47,7 +47,7 @@ export IMAGE_TAG=$(cat image_tag.txt)
 echo "Using IMAGE_TAG=$IMAGE_TAG"
 
 # Write tag to env file
-echo "IMAGE_TAG=$IMAGE_TAG" > image_tag.env
+echo "IMAGE_TAG=$IMAGE_TAG" > .env
 
 # Start container
-docker compose --env-file image_tag.env up -d
+docker-compose up -d
