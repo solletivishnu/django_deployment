@@ -12,7 +12,7 @@ echo "[AfterInstall] Pulling the Docker image..."
 
 # Confirm presence of the file
 if [ ! -f image_tag.txt ]; then
-  echo "image_tag.txt not found in /home/ubuntu/django_deployment!"
+  echo "image_tag.txt not founded in /home/ubuntu/django_deployment!"
   exit 1
 fi
 
