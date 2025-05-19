@@ -13,11 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+#from django.contrib import admin
+#from django.urls import path, include
+
+#urlpatterns = [
+ #   path('admin/', admin.site.urls),
+ #   path('api/', include('todo.urls')),
+#]
+
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('todo.urls')),
+    path('tasks/', include('todo.urls')),  # your tasks app here
+    path('', RedirectView.as_view(url='/tasks/', permanent=True)),  # <-- this is the redirect
 ]
 
