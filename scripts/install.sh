@@ -5,7 +5,6 @@
 #!/bin/bash
 #cd /home/ubuntu/django_deployment || exit
 #!/bin/bash
-#!/bin/bash
 set -e
 
 echo "[Install] Setting ownership and permissions..."
