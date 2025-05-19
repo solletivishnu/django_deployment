@@ -20,6 +20,9 @@
 
 #!/bin/bash
 set -e
+# Fix ownership and permissions to avoid permission denied errors later
+chown -R ubuntu:ubuntu /home/ubuntu/django_deployment
+chmod -R u+rwX /home/ubuntu/django_deployment
 cd /home/ubuntu/django_deployment || exit 1
 
 echo "[AfterInstall] Pulling the Docker image..."
