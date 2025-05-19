@@ -24,4 +24,5 @@ COPY . .
 EXPOSE 8000
 
 # Use shell to allow DB wait + migrate
-CMD sh -c "python manage.py collectstatic --noinput && python manage.py migrate && gunicorn todo_project.wsgi:application --bind 0.0.0.0:8000"
+CMD sh -c "python manage.py collectstatic --noinput && gunicorn todo_project.wsgi:application --bind 0.0.0.0:8000"
+

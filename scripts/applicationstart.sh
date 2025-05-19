@@ -31,6 +31,7 @@
 #docker compose --env-file image_tag.env up -d
 
 #!/bin/bash
+set -e
 echo "[ApplicationStart] Starting Docker container..."
 cd /home/ubuntu/django_deployment || exit 1
 # Check image_tag.txt exists and is not empty
@@ -45,3 +46,18 @@ echo "Using IMAGE_TAG=$IMAGE_TAG"
 echo "IMAGE_TAG=$IMAGE_TAG" >> .env
 # Start container
 docker-compose up -d
+echo "[ApplicationStart] Containers started."
+
+echo "[ApplicationStart] Waiting for container to be healthy..."
+sleep 10  # Give time for DB and web to fully start
+
+# Get the running web container ID or name (adjust "web" if your service has a different name)
+WEB_CONTAINER=$(docker ps --filter "name=web" --format "{{.ID}}" | head -n 1)
+
+if [ -n "$WEB_CONTAINER" ]; then
+  echo "[ApplicationStart] Running database migrations..."
+  docker exec "$WEB_CONTAINER" python manage.py migrate
+else
+  echo "Error: Web container not running. Migration skipped."
+  exit 1
+fi

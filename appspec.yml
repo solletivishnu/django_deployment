@@ -8,7 +8,13 @@ permissions:
     owner: ubuntu
     group: ubuntu
     mode: 755
+
 hooks:
+  ApplicationStop:
+    - location: scripts/applicationstop.sh
+      timeout: 180
+      runas: ubuntu
+
   BeforeInstall:
     - location: scripts/beforeinstall.sh
       timeout: 300
