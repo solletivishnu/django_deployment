@@ -28,6 +28,6 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tasks/', include('todo.urls')),  # your tasks app here
-    path('', RedirectView.as_view(url='/tasks/', permanent=True)),  # <-- this is the redirect
+    path('', RedirectView.as_view(url='/tasks/', permanent=False)),  # <-- this is the redirect
 ]
 
