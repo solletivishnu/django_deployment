@@ -1,15 +1,17 @@
-#!/bin/bash
+##!/bin/bash
 set -e
 
 echo "[BeforeInstall] Stopping existing Docker containers (if any)..."
 docker ps -q | xargs -r docker stop || true
 docker system prune -af || true
 
+echo "[BeforeInstall] Creating deployment directory..."
+mkdir -p /home/ubuntu/django_deployment
+
 echo "[BeforeInstall] Setting permissions..."
-# Make sure ubuntu owns the directory and can write
 chown -R ubuntu:ubuntu /home/ubuntu/django_deployment
 chmod -R u+rwX /home/ubuntu/django_deployment
-chmod +x /home/ubuntu/django_deployment/scripts/*.sh
+chmod +x /home/ubuntu/django_deployment/scripts/*.sh || true
 
 echo "[BeforeInstall] Done."
 
