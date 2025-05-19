@@ -18,7 +18,7 @@
 #docker pull vishnu9/todo-app:$IMAGE_TAG
 
 
-#!/bin/bash
+#!/bin/ba
 set -e
 
 cd /home/ubuntu/django_deployment || exit 1
