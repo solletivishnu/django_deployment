@@ -4,7 +4,7 @@
 # No git pull needed here — CodeDeploy does the sync
 #!/bin/bash
 #cd /home/ubuntu/django_deployment || exit
-#!/bin/ba
+#!/bin/bash
 set -e
 
 echo "[Install] Setting ownership and permissions..."
