@@ -948,7 +948,7 @@ function runTokens(pattern, flags, pos, scope, context) {
         matchLength: match[0].length,
         output: t.handler.call(context, match, scope, flags),
         reparse: t.reparse
-      }; // Finished with token tests
+      }; // completed with token tests
 
       break;
     }
