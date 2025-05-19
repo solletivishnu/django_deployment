@@ -46,6 +46,8 @@ POSTGRES_PASSWORD=$(echo "$SECRET_JSON" | jq -r .POSTGRES_PASSWORD)
 POSTGRES_HOST=$(echo "$SECRET_JSON" | jq -r .POSTGRES_HOST)
 POSTGRES_PORT=$(echo "$SECRET_JSON" | jq -r .POSTGRES_PORT)
 POSTGRES_DB=$(echo "$SECRET_JSON" | jq -r .POSTGRES_DB)
+# Ensure ubuntu owns the directory
+sudo chown -R ubuntu:ubuntu /home/ubuntu/django_deployment
 
 # Write to .env file for Docker Compose or Django to use
 echo "[Secrets] Writing .env file..."
