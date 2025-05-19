@@ -57,8 +57,6 @@ POSTGRES_HOST=$POSTGRES_HOST
 POSTGRES_PORT=$POSTGRES_PORT
 POSTGRES_DB=$POSTGRES_DB
 EOF
-
-chown ubuntu:ubuntu /home/ubuntu/django_deployment/.env
 chmod 600 /home/ubuntu/django_deployment/.env
 
 echo "[Secrets] .env file created successfully."

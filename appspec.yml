@@ -3,8 +3,11 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/django_deployment
-
-
+permissions:
+  - object: /home/ubuntu/django_deployment
+    owner: ubuntu
+    group: ubuntu
+    mode: 755
 hooks:
   BeforeInstall:
     - location: scripts/beforeinstall.sh
