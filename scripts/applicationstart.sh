@@ -35,7 +35,7 @@ echo "[ApplicationStart] Starting Docker container..."
 cd /home/ubuntu/django_deployment || exit 1
 # Check image_tag.txt exists and is not empty
 if [ ! -s image_tag.txt ]; then
-  echo "Error: image_tag.txt not found or empty!"
+  echo "Error ErrorS: image_tag.txt not found or empty!"
   exit 1
 fi
 # Load IMAGE_TAG from file
