@@ -50,12 +50,15 @@ POSTGRES_DB=$(echo "$SECRET_JSON" | jq -r .POSTGRES_DB)
 # Write to .env file for Docker Compose or Django to use
 echo "[Secrets] Writing .env file..."
 
-sudo -u ubuntu bash -c 'cat > /home/ubuntu/django_deployment/.env <<EOF
+cat <<EOF > /home/ubuntu/django_deployment/.env
 POSTGRES_USER='"$POSTGRES_USER"'
 POSTGRES_PASSWORD='"$POSTGRES_PASSWORD"'
 POSTGRES_HOST='"$POSTGRES_HOST"'
 POSTGRES_PORT='"$POSTGRES_PORT"'
 POSTGRES_DB='"$POSTGRES_DB"'
-EOF'
+EOF
+
+chown ubuntu:ubuntu /home/ubuntu/django_deployment/.env
+chmod 600 /home/ubuntu/django_deployment/.env
 
 echo "[Secrets] .env file created successfully."
