@@ -20,7 +20,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project files
 COPY . .
 
-# Set default port
+# Set deflt port
 EXPOSE 8000
 
 # Use shell to allow DB wait + migrate
